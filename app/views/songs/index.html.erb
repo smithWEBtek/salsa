@@ -1,0 +1,16 @@
+<h1>Songs</h1>
+
+<% @songs.each do |song| %>
+  <h3><%= song.title %></h3>
+  <p>slug: <%= song.slug %></p>
+  <% if song.audio_file %>
+    <figure>
+      <audio
+        controls
+        src=<%= audio_path(song.audio_file) %>
+        type="audio/mp3"
+        Your browser does not support the audio element.
+      </audio>
+    </figure>
+  <% end %>
+<% end %>
