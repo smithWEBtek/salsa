@@ -9,7 +9,12 @@ class Song < ApplicationRecord
   end
 
   def rename_audio_file
-    
+    # iterate through all the audio files in /public/audios/*.mp3
+    # slugify the title of the mp3
+    # find_or_create_by slugified_title
+    # set capitalized_title
+    # find the matching Song instance
+
   end
 
   def self.set_slugs
