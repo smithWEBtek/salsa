@@ -4,11 +4,14 @@ class Song < ApplicationRecord
   
   after_validation :set_slug, only: [:create, :update]
   
+  
   def to_param
     "#{id}-#{slug}"
   end
-
-  def rename_audio_file
+  
+  def self.rename_audio_files
+    @files = Rails.root.join('public', 'audios', '*.mp3')
+    binding.pry
     # iterate through all the audio files in /public/audios/*.mp3
     # slugify the title of the mp3
     # find_or_create_by slugified_title
