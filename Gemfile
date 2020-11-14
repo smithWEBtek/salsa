@@ -29,10 +29,12 @@ gem 'jbuilder', '~> 2.7'
 
 # capify
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'capistrano',                 '3.11.2'
-gem 'capistrano-rails',           '1.4.0'
+gem 'capistrano', '3.11.2'
+gem 'capistrano-rails', '1.4.0'
 gem 'capistrano-rvm'
-gem 'capistrano-passenger',       '0.2.0'
+gem 'capistrano-passenger', '0.2.0'
+gem 'ed25519',  '>= 1.2'
+gem 'bcrypt_pbkdf', '>= 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
