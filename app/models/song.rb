@@ -12,12 +12,21 @@ class Song < ApplicationRecord
   def self.rename_audio_files
     @files = Rails.root.join('public', 'audios', '*.mp3')
     binding.pry
-    # iterate through all the audio files in /public/audios/*.mp3
+    # iterate through all the audio files in /public/files/harold/audio/*.mp3
     # slugify the title of the mp3
     # find_or_create_by slugified_title
     # set capitalized_title
     # find the matching Song instance
-
+  end
+  
+  def self.rename_chart_files
+    @files = Rails.root.join('public', 'harold/chart', '*.pdf')
+    binding.pry
+    # iterate through all the audio files in /public/files/harold/chart/*.pdf
+    # slugify the title of the mp3
+    # find_or_create_by slugified_title
+    # set capitalized_title
+    # find the matching Song instance
   end
 
   def self.set_slugs
