@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_10_25_234635) do
   create_table "songs", force: :cascade do |t|
     t.string "title"
     t.string "style"
-    t.string "chart_location"
-    t.string "audio_file"
+    t.string "chart"
+    t.string "audio"
     t.string "slug"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false

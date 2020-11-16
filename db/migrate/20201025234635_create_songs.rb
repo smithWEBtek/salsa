@@ -3,8 +3,8 @@ class CreateSongs < ActiveRecord::Migration[6.0]
     create_table :songs do |t|
       t.string :title
       t.string :style
-      t.string :chart_location, default: nil
-      t.string :audio_file, default: nil
+      t.string :chart, default: nil
+      t.string :audio, default: nil
       t.string :slug
       t.text :notes
 
