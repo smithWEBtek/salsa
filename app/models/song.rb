@@ -4,45 +4,19 @@ class Song < ApplicationRecord
   
   after_validation :set_slug, only: [:create, :update]
   
-  
   def to_param
     "#{id}-#{slug}"
   end
-  
-  def self.rename_audio_files
-    @files = Rails.root.join('public', 'assets', 'files', 'audio', '*.mp3')
-    binding.pry
-    # iterate through all the audio files in /public/files/harold/audio/*.mp3
-    # slugify the title of the mp3
-    # find_or_create_by slugified_title
-    # set capitalized_title
-    # find the matching Song instance
-  end
-  
-  def self.rename_chart_files
-    @files = Rails.root.join('public', 'harold/chart', '*.pdf')
-    binding.pry
-    # iterate through all the audio files in /public/files/harold/chart/*.pdf
-    # slugify the title of the mp3
-    # find_or_create_by slugified_title
-    # set capitalized_title
-    # find the matching Song instance
-  end
 
-  def self.set_slugs
-    self.all.each do |song|
-      song.update(slug: song.title.parameterize)
+  def self.refresh_songs
+    path = Rails.root.join('public', 'assets', 'files', 'audio', '*.mp3')
+    Dir.glob(path.to_s) do |file|
+      song = Song.find_or_create_by(title: file.split('/').last.split('.mp3').first)
+      song.audio = file
+      song.save
     end
   end
-
-  def self.rename_files
-    self.all.each do |song|
-      title = song.set_slug + 'mp3'
-      # Rails.root.join('app', 'public' 'assets', 'audios').concat()
-      
-    end
-  end
-
+ 
   private
   def set_slug
     self.slug = title.to_s.parameterize
