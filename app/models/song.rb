@@ -9,7 +9,7 @@ class Song < ApplicationRecord
   end
 
   def self.refresh_songs
-    path = Rails.root.join('public', 'assets', 'files', 'audio', '*.mp3')
+    path = Rails.root.join('public', 'audios', '*.mp3')
     Dir.glob(path.to_s) do |file|
       song = Song.find_or_create_by(title: file.split('/').last.split('.mp3').first)
       song.audio = file
